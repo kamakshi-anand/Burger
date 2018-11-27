@@ -4,12 +4,17 @@
     <div class="container">
         <div class="row">
             <div class="col s6">
+                <br>
+                <br>
+                <h4>Devour it:</h4>
+                <br>
                 {{#each burgers}}
                 {{#unless this.devoured}}
                 <div>
 
-                    <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                        <button type="submit" data-burgerid="{{this.id}}">{{this.burger_name}}</button>
+                    <form action="/burgers/{{this.id}}/false" method="POST">
+                        <button class="btn-outline-warning btn-lg" type="submit" data-burgerid="{{this.id}}" data-flag="false">{{this.burger_name}}</button>
+                      
                     </form>
 
                     {{!-- <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
@@ -20,31 +25,51 @@
                 {{/each}}
             </div>
 
+
+
             <div class="col s6">
+                <br>
+                <br>
+                <h4>Devoured:</h4>
+                <br>
                 {{#each burgers}}
                 {{#if this.devoured}}
-                <div class='burgerEaten'>
-                    <div>
-                        <p><b>{{this.burger_name}}</b></p>
+                <form action="/burgers/{{this.id}}/true" method="POST">
+                    <div class='burgerEaten'>
+                        <div>
+                            <b><button class="btn-outline-primary btn-lg">{{this.burger_name}}</button></b>
+                            
+                        </div>
                     </div>
-                </div>
+                </form>
                 {{/if}}
                 {{/each}}
             </div>
         </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+
+        <h2>Add A Burger</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <form action="/burger/add/" method="POST" class="bur_move" method="POST">
+                    <input type="text" id="bur_name" name="burger_name" placeholder=" Type Burger">
+                    <button type="submit" class="addBurgerButton  btn-success btn-lg">Add A Burger</button>
+                </form>
+            </div>
+        </div>
     </div>
+
 </main>
 
-<h2>Add A Burger Option</h2>
 
-{{!-- <div class="row">
-    <div class="col s12">
-        <form action="/burgers" method="POST">
-            <input type="text" id="name" name="burger_name" placeholder="Uber Delicious Burger">
-            <button type="submit" class="addBurgerButton">Add The Burger</button>
-        </form>
-    </div> --}}
-</div>
+
+
+
+
 <script type="text/javascript">
 
     function update() {
@@ -57,7 +82,7 @@
 
         // Send the DELETE request.
         $.ajax("/burgers/" + id, {
-            type: "PUT"
+            type: "POST"
         }).then(
             function () {
                 console.log("updated id ", id);

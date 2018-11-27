@@ -1,0 +1,27 @@
+#cartoon_burger {
+    margin-left: 560px;
+    background-color: yellowgreen;
+}
+h1,h2{
+    text-align: center;
+    font-family:cursive;
+}
+h4 {
+    margin-left: 100px;
+    color: blue;
+    font-family: cursive;
+}
+body{
+    background-color: yellowgreen;
+}
+.btn-lg{
+    color: black;
+    width: 350px;
+}
+#bur_name {
+    width: 350px;
+    height: 50px;
+}
+.bur_move {
+    margin-left: 150px;
+}

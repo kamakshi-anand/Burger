@@ -8,7 +8,7 @@ var burger = {
       });
     },
   
-    // // The variables cols and vals are arrays
+     // The variables cols and vals are arrays********************************
     // insertOne: function(cols, vals, cb) {
     //   orm.insertOne('burgers', cols, vals, function(res) {
     //     cb(res);
@@ -16,10 +16,17 @@ var burger = {
     // },
   
     // The objColVals is an object specifying columns as object keys with associated values
-    update: function(id,cb) {
-      orm.updateBurger(id,function(res) {
+    update: function(id,flag,cb) {
+      orm.updateBurger(id,flag,function(res) {
         cb(res);
       });
-    }
+    },
+
+    add: function(name,cb) {
+        orm.addBurger(name,function(res) {
+          cb(res);
+        });
+      }
+    
   };
   module.exports = burger;
